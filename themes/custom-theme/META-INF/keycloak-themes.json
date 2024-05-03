@@ -1,0 +1,12 @@
+{
+  "themes": [
+    {
+      "name": "custom.v1",
+      "types": ["login"]
+    },
+    {
+      "name": "custom.v2",
+      "types": ["login"]
+    }
+  ]
+}

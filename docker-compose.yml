@@ -1,0 +1,44 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    volumes:
+      - ./docker/db/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: keycloak
+
+  keycloak:
+    depends_on:
+      - db
+    image: quay.io/keycloak/keycloak:24.0.3
+    command: ["start-dev"]
+    volumes:
+        - './themes/custom-theme/theme:/opt/keycloak/themes'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db/keycloak
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
+
+    ports:
+      - 8080:8080
+
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
