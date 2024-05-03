@@ -34,7 +34,8 @@ Instale as dependências do projeto React:
 
 # Imagens do Projeto
 
-<img width="1502" alt="image" src="https://github.com/eduardorerick/keycloak-react/assets/82004348/0cd61ff6-c259-4357-9c94-929c0105a81f">
+<img width="1502" alt="image" src="https://github.com/eduardorerick/keycloak-react/assets/82004348/a17e4ebf-c8b2-4dbb-b380-1398952d084e">
+
 
 <img width="1502" alt="image" src="https://github.com/eduardorerick/keycloak-react/assets/82004348/056c8df6-97b0-4458-bd05-8a02967eab73">
 
